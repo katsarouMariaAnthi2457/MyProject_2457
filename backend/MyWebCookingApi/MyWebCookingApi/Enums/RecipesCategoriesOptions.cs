@@ -2,12 +2,15 @@
 {
     public enum RecipesCategoriesOptions
     {
-        Legumes,
+        Ospria,
         Pies,
-        Meat,
+        KyriosPiata,
         Desert,
         Spegheti,
-        Fish,
-        Croissant,
+        Salata,
+        GrhgoresSyntages,
+        LightPiata,
+        Snak,
+        Ladera
     }
 }
