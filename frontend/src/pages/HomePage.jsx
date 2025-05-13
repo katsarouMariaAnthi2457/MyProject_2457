@@ -1,20 +1,25 @@
-import { FoodList } from '@/components/FoodList'
-import React from 'react'
-import { Button } from '../components/ui/button'
-import CategoryList from '@/components/CategoryList'
+import { FoodList } from '@/components/FoodList';
+import React from 'react';
+import { Button } from '../components/ui/button';
+import CategoryMenu from '@/components/CategoryMenu';
+import { Link } from 'react-router-dom';
 
 function HomePage() {
   return (
-    <div > 
-        <FoodList/>
+    <div>
+      <CategoryMenu />
+      
+      <div className="flex justify-center">
+        <Link to="/create Recipe">
+          <Button className="bg-sky-900 w-full max-w-xs mb-3">
+            Δημιούργησε τη δική σου συνταγή!!
+          </Button>
+        </Link>
+      </div>
 
-        <div className="flex justify-center">
-            <Button className="item-center bg-sky-900  size-15 w-xl mb-3">Δημιουργησε τη δικη συνταγη!!</Button>
-        </div>
-          
-        <CategoryList/>
+      <FoodList />
     </div>
-  )  
+  );
 }
 
-export default HomePage
+export default HomePage;

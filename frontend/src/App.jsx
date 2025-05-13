@@ -5,17 +5,19 @@ import './App.css'
 import axios from 'axios';
 import { Layout } from './components/Layout';
 import HomePage  from './pages/HomePage';
-
-
+import { Routes, Route } from 'react-router-dom';
+import CategoryPage from './pages/CategoryPage';
+ 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0); // 
+
   return (
     <Layout>
-      
-      <HomePage/>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
     </Layout>
   );
 }
 
-
-export default App
+export default App;
