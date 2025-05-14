@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MyWebCookingApi.Dtos;
+using MyWebCookingApi.Enums;
 using MyWebCookingApi.Interfaces;
 
 namespace MyWebCookingApi.Controllers;
@@ -19,6 +20,15 @@ public class CookingController : ControllerBase
     public async Task<IActionResult> GetRecipes()
     {
         var result = await _recipeService.GetAll();
+
+        return Ok(result);
+    }
+
+    [HttpGet]
+    [Route("recipesByCategory")]
+    public async Task<IActionResult> GetRecipesByCategories(RecipesCategoriesOptions options)
+    {
+        var result = await _recipeService.GetRecipesByCategories(options);
 
         return Ok(result);
     }
