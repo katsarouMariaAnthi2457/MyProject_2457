@@ -11,6 +11,7 @@
         GrhgoresSyntages,
         LightPiata,
         Snak,
-        Ladera
+        Ladera,
+        Vegan
     }
 }
