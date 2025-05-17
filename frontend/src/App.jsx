@@ -9,7 +9,7 @@ import { Routes, Route } from 'react-router-dom';
 import CategoryPage from './pages/CategoryPage';
 import CreateRecipe from './pages/CreateRecipe'; 
 import AuthenticationPage from './pages/AuthenticationPage';
-
+import ForgotPassword from './pages/ForgotPassword';
  
 function App() {
   const [count, setCount] = useState(0); // 
@@ -21,7 +21,7 @@ function App() {
         <Route path="/create" element={<CreateRecipe />} /> {/* <-- Add this */}
         <Route path="/authentication" element={<AuthenticationPage />} /> 
         <Route path="/category/:categoryName" element={<CategoryPage />} />
-       
+        <Route path="/forgotPassword" element={<ForgotPassword />} />       
       </Routes>
     </Layout>
   );
