@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyWebCookingApi.DbContext;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyWebCookingApi.Migrations
 {
     [DbContext(typeof(CookingDbContext))]
-    partial class CookingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250510101725_Add_FilePath_to_Recipes")]
+    partial class Add_FilePath_to_Recipes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -164,9 +167,6 @@ namespace MyWebCookingApi.Migrations
 
                     b.Property<double>("Amount")
                         .HasColumnType("double precision");
-
-                    b.Property<int>("MeasurmentUnit")
-                        .HasColumnType("integer");
 
                     b.Property<string>("Name")
                         .IsRequired()

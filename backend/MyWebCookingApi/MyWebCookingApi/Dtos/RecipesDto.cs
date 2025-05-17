@@ -1,16 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using MyWebCookingApi.Enums;
+using MyWebCookingApi.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using MyWebCookingApi.Enums;
 
-namespace MyWebCookingApi.Models
+namespace MyWebCookingApi.Dtos
 {
-    public class Recipes
+    public class RecipesDto
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
-        [EnumDataType(typeof(RecipesCategoriesOptions))]
         public RecipesCategoriesOptions CategoriesOptions { get; set; }
 
         public string Name { get; set; }
@@ -25,6 +23,6 @@ namespace MyWebCookingApi.Models
 
         public string FilePath { get; set; }
 
-        public virtual ICollection<Ingredients> Ingredients { get; set; }
+        public List<IngredientsDto>? Ingredients { get; set; }
     }
 }
