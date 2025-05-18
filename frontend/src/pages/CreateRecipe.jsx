@@ -36,7 +36,7 @@ export default function CreateRecipe() {
     vegan: 11,
   };
 
-  const units = { "γρ": 0, "ml": 1, "κ.σ.": 2, "κ.γ.": 3, "τεμ.": 4 };
+  const units = { "γρ": 0, "ml": 1, "κ.σ.": 2, "κ.γ.": 3, "τεμ.": 4, "λιτρο": 5, "κιλο": 6, "κιλα": 7, "κουπα":8 };
   const mappedUnits = Object.keys(units);
 
   // Form submit
