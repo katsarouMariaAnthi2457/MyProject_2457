@@ -10,6 +10,7 @@ import CategoryPage from './pages/CategoryPage';
 import CreateRecipe from './pages/CreateRecipe'; 
 import AuthenticationPage from './pages/AuthenticationPage';
 import ForgotPassword from './pages/ForgotPassword';
+import RecipeInfo from './pages/RecipeInfo';
  
 function App() {
   const [count, setCount] = useState(0); // 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/authentication" element={<AuthenticationPage />} /> 
         <Route path="/category/:categoryName" element={<CategoryPage />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />       
+        <Route path="/recipe/:id" element={<RecipeInfo />} />
       </Routes>
     </Layout>
   );

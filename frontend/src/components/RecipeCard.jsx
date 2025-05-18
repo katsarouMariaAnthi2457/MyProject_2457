@@ -1,22 +1,23 @@
-import React from 'react'
+import React from 'react';
 import { Card, CardContent } from "./ui/card";
-import pastaImg from "@/assets/pasta.jpg";
+import { Link } from "react-router-dom";
 
-function RecipeCard() {
+function RecipeCard({ recipe }) {
   return (
-    <div>
-        <Card>  
-            <CardContent>
-                    <img
-                    src= {pastaImg}
-                    alt="pasta"
-                    className="w-full h-auto rounded-lg mb-4"
-                />
-                <p className="text-lg font-semibold text-center">Delicious Pasta</p>
-            </CardContent>
-        </Card>
-    </div>
-  )
+    <Link to={`/recipe/${recipe.id}`} className="block">
+      <Card>  
+        <CardContent>
+          <img
+            src={`https://localhost:7235/${recipe.filePath}`}
+            alt={recipe.name}
+            className="w-full h-40 rounded-lg mb-4 object-cover"
+          />               
+          <h1 className='font-semibold text-xl text-balance text-center'>{recipe.name}</h1>
+          <p className="text-lg text-center line-clamp-4 mt-3">{recipe.execution}</p>
+        </CardContent>
+      </Card>
+    </Link>
+  );
 }
 
-export default RecipeCard
+export default RecipeCard;

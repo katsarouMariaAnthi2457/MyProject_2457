@@ -28,13 +28,13 @@ export function CategoryMenu() {
             {/* Assuming CardListItem renders a list of items */}
             <CardListItem title="Πρωινά" image={breakfastImg} />
             <CardListItem title="Κυρίως Πιάτα" image={kiriosPiataImg} />
-            <CardListItem title=" Γλυκά" image={DessertImg} />
-            <CardListItem title=" Μακαρονια" image={SpaghettiImg} />
-            <CardListItem title="Oσπρια" image ={ospriaImg}/>
+            <CardListItem title="Γλυκά" image={DessertImg} />
+            <CardListItem title="Μακαρονια" image={SpaghettiImg} />
+            <CardListItem title="Οσπρια" image ={ospriaImg}/>
             <CardListItem title="Σαλάτες" image ={SaladImg}/> 
             <CardListItem title="Λαδερά" image ={laderaImg}/> 
             <CardListItem title="Γρήγορες Συνταγές" image ={QuickMealsImg}/> 
-            <CardListItem title="light πιατα" image ={LightPiataImg}/> 
+            <CardListItem title="Light Πιάτα" image ={LightPiataImg}/> 
             <CardListItem title="Σνακ" image ={snackImg}/> 
 
 
