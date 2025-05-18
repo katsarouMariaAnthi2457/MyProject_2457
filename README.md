@@ -11,7 +11,7 @@
 Η εργασια θα γινει σε δυο κομματια, το frontend και backend οπου στο frontend χρησιμοποιω React με Vite και στο backend χρησιμοποιω ASP.NET
  To vite ειναι εργαλειο για αναπτυξη εφαρμογων Javascript , το οποιο ειναι αρκετα γρηγορο και εχει ενσωματωμενη υποστηριξη ESMODULES 
 
- ΟΔΗΓΙΕΣ ΕΓΚΑΤΑΣΤΑΣΗΣ
+ ΟΔΗΓΙΕΣ ΕΓΚΑΤΑΣΤΑΣΗΣ για frontend 
   Για τη δημιουργια REACT PROJECT ΜΕ VITE ΣΤΟ VS CODE εγραψα την εντολη
   1) npm create vite@latest project-name --template react
   2) npm install
@@ -23,3 +23,9 @@ npx tailwindcss init -p
 5) Εγκατεστησα το Shadcn με την εντολη npx shadcn@latest init, το οποιο ειναι ενα ui component library με βαση την tailwind css που ειναι και απαραιτητη η εγκατασταση της . Mε αυτη τη βιβλιοθηκη μπορω να βοηθησω και να χρησιμοποιησω ετοιμα components οπως buttons forms ,cards τα οποια μπορω να τροποποιησω και να βγει το αποτελεσμα που θελω . Μεχρι στιγμης εχω χρησιμοποιησει 2 components τα cards για τις συνταγες μου στην αρχικη σελιδα και ενα κουμπι που στη συνεχεια θα πηγαινει σε σελιδα με φορμα για να δημιουργησει καποιος τη δικη του συνταγη . οι εντολεσ ειναι npx shadcn@latest add card
 npx shadcn@latest add button
   
+ ΟΔΗΓΙΕΣ ΕΓΚΑΤΑΣΤΑΣΗΣ για backend 
+ 1) Για τη δημιοουργια νεου project πατησα create a new project επειτα asp.net web api εδωσα ονομα και επειτα πατησα create.
+ 2)  Οι βιβλιοθηκες τις εφτιαξα κανοντασ δεξι κλικ στο MywebCookingApi παταω manage nuget packages και εγκατεστησα το 1)
+ 3)   identity framework  βοηθαει για την αυθεντικιποιηση χρηστων  ,
+ 4) )το mvc newton soft json,
+ 5)  entryframework.tools kai Npqsql.postgreSQL το οποιο ειναι βασικο για να συνδεθω με τη βαση PostgreSQL  η οποια  ειναι σχεσιακη βαση  και λεγεται CookingDatabase και το connection string το παιρνω απο το appsetting.json.
