@@ -59,4 +59,12 @@ public class CookingController : ControllerBase
         
         return Ok(result);
     }
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateScore([FromBody] UpdateScoreParams updateScore)
+    {
+        await _recipeService.UpdateScore(updateScore.Score, updateScore.RecipeId);
+
+        return Ok("Recipe score updated");
+    }
 }

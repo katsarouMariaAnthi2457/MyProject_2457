@@ -11,5 +11,6 @@ namespace MyWebCookingApi.Interfaces
         Task<List<Recipes>> GetRecipesByCategories(RecipesCategoriesOptions options);
         Task<List<IngredinetRequest>> AddIngredinets(List<IngredinetRequest> ingredients);
         Task<RecipesDto?> GetRecipesById(long id);
+        Task UpdateScore(int score, long recipeId);
     }
 }

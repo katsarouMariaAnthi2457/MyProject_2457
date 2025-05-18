@@ -1,12 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.EntityFrameworkCore;
 using MyWebCookingApi.DbContext;
 using MyWebCookingApi.Dtos;
 using MyWebCookingApi.Enums;
 using MyWebCookingApi.Interfaces;
 using MyWebCookingApi.Models;
-using System;
 
 namespace MyWebCookingApi.Implementation
 {
@@ -151,9 +148,25 @@ namespace MyWebCookingApi.Implementation
 
         public async Task UpdateScore(int score, long recipeId)
         {
-            var recipe = _dbContext.Recipes.Where(d => d.Id == recipeId).FirstOrDefault();
+            var recipe = await _dbContext.Recipes.FirstOrDefaultAsync(r => r.Id == recipeId);
 
-            recipe.Score = score;
+            if (recipe == null)
+                throw new Exception("Recipe not found");
+
+            if (score < 1 || score > 5)
+                throw new ArgumentOutOfRangeException(nameof(score), "Score must be between 1 and 5");
+
+            var totalScore = recipe.Score * recipe.NumberOfVotes;
+            recipe.NumberOfVotes++;
+
+            // Calculate average and round to nearest whole number
+            float newAverage = (float)(totalScore + score) / recipe.NumberOfVotes;
+            recipe.Score = (int)Math.Round(newAverage, MidpointRounding.ToPositiveInfinity);
+
+            _dbContext.Recipes.Update(recipe);
+
+            await _dbContext.SaveChangesAsync();
         }
+
     }
 }

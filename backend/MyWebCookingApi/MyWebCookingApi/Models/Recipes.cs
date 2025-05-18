@@ -25,6 +25,8 @@ namespace MyWebCookingApi.Models
 
         public string FilePath { get; set; }
 
+        public int NumberOfVotes { get; set; }
+
         public virtual ICollection<Ingredients> Ingredients { get; set; }
     }
 }
