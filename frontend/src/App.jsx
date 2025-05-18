@@ -11,7 +11,7 @@ import CreateRecipe from './pages/CreateRecipe';
 import AuthenticationPage from './pages/AuthenticationPage';
 import ForgotPassword from './pages/ForgotPassword';
 import RecipeInfo from './pages/RecipeInfo';
- 
+import CreateWeeklyPlan from './pages/CreateWeeklyPlan';
 function App() {
   const [count, setCount] = useState(0); // 
 
@@ -24,6 +24,7 @@ function App() {
         <Route path="/category/:categoryName" element={<CategoryPage />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />       
         <Route path="/recipe/:id" element={<RecipeInfo />} />
+        <Route path="/weekly-plan" element={<CreateWeeklyPlan />} />
       </Routes>
     </Layout>
   );
