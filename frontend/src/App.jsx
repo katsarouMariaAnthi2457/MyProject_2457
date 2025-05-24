@@ -13,7 +13,7 @@ import ForgotPassword from './pages/ForgotPassword';
 import RecipeInfo from './pages/RecipeInfo';
 import CreateWeeklyPlan from './pages/CreateWeeklyPlan';
 import { ProtectedRoute } from './routes.jsx/ProtectedRoute';
-
+import SearchResults from './components/SearchResults';
 function App() {
   const [count, setCount] = useState(0); // 
 
@@ -26,7 +26,7 @@ function App() {
         <Route path="/category/:categoryName" element={<CategoryPage />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />       
         <Route path="/recipe/:id" element={<RecipeInfo />} />
-       
+        <Route path="/search" element={<SearchResults />} />
 
           {/* Προστατευμένες routes */}
           <Route element={<ProtectedRoute />}>

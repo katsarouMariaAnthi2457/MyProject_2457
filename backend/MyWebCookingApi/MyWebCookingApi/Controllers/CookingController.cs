@@ -59,6 +59,19 @@ public class CookingController : ControllerBase
         
         return Ok(result);
     }
+    [HttpGet]
+    [Route("search")]
+    public async Task<IActionResult> SearchRecipes([FromQuery] string query)
+    {
+        if (string.IsNullOrWhiteSpace(query))
+        {
+            return BadRequest("Query parameter is required");
+        }
+
+        var recipes = await _recipeService.SearchRecipes(query);
+
+        return Ok(recipes);
+    }
 
     [HttpPut]
     public async Task<IActionResult> UpdateScore([FromBody] UpdateScoreParams updateScore)

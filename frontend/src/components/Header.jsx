@@ -1,8 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo2 from '@/assets/logo2.png';
 import { UserIcon } from '@heroicons/react/24/solid';
+import { useState } from "react";
 
 export function Header() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      // Πηγαίνουμε στη σελίδα αναζήτησης με το query
+      navigate(`/search?query=${encodeURIComponent(searchTerm.trim())}`);
+    }
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 py-2">
       <div className="flex h-16 items-center px-4 w-full">
@@ -18,10 +30,11 @@ export function Header() {
 
         {/* Search + User icon μαζί δεξιά */}
         <div className="flex items-center gap-2">
-          <form className="flex items-center w-72" onSubmit={(e) => e.preventDefault()}>
+          <form className="flex items-center w-72" onSubmit={handleSubmit}>
             <label htmlFor="simple-search" className="sr-only">Search</label>
             <div className="relative w-full">
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                {/* ... svg icon ... */}
                 <svg
                   className="w-4 h-4 text-gray-500 dark:text-gray-400"
                   aria-hidden="true"
@@ -44,6 +57,8 @@ export function Header() {
                 className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
                 placeholder="Search recipe"
                 required
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
             <button

@@ -31,6 +31,24 @@ namespace MyWebCookingApi.Implementation
 
             return recipesList;
         }
+        public async Task<List<Recipes>> SearchRecipes(string query)
+        {
+            try
+            {
+                query = query.ToLower();
+
+                var recipesList = await _dbContext.Recipes
+                    .Where(r => r.Name.ToLower().Contains(query))
+                    .ToListAsync();
+
+                return recipesList;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
 
         public async Task<Recipes> CreateRecipe(RecipeParameters recipeParameters)
         {
