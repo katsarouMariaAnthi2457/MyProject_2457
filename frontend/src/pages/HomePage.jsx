@@ -1,10 +1,23 @@
+import React, { useState, useEffect } from 'react';  // έβαλα useState, useEffect
 import { FoodList } from '@/components/FoodList';
-import React from 'react';
 import { Button } from '../components/ui/button';
 import CategoryMenu from '@/components/CategoryMenu';
 import { Link } from 'react-router-dom';
+import LoaderForPage from '@/components/LoaderForPage'; // φαντάζομαι αυτό είναι το loader σου
 
 function HomePage() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) return <LoaderForPage />;
+
   return (
     <div>
       <CategoryMenu />

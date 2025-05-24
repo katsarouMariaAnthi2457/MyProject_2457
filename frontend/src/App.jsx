@@ -13,12 +13,14 @@ import ForgotPassword from './pages/ForgotPassword';
 import RecipeInfo from './pages/RecipeInfo';
 import CreateWeeklyPlan from './pages/CreateWeeklyPlan';
 import { ProtectedRoute } from './routes.jsx/ProtectedRoute';
+
 function App() {
   const [count, setCount] = useState(0); // 
 
   return (
     <Layout>
       <Routes>
+
         <Route path="/" element={<HomePage />} />
         <Route path="/authentication" element={<AuthenticationPage />} /> 
         <Route path="/category/:categoryName" element={<CategoryPage />} />
