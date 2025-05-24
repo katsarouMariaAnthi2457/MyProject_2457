@@ -4,12 +4,15 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css'
 import App from './App.jsx'
 import ReactDOM from 'react-dom/client';
+import AuthProvider from './context/AuthProvider';
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>   {/* Ορίζουμε το BrowserRouter για να δουλέψει το routing */}
+  <BrowserRouter>
+    <AuthProvider>   {/* Τυλίγουμε το App με το AuthProvider */}
       <App />
-    </BrowserRouter>
-  </StrictMode>
+    </AuthProvider>
+  </BrowserRouter>
+</StrictMode>
 );
