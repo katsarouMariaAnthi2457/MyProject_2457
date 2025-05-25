@@ -1,18 +1,27 @@
 import { Link, useNavigate } from "react-router-dom";
 import logo2 from '@/assets/logo2.png';
-import { UserIcon } from '@heroicons/react/24/solid';
+import { UserIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/solid'; // Πρόσθεσα το logout icon
 import { useState } from "react";
 
 export function Header() {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
+  // Παίρνουμε το token από localStorage για να ξέρουμε αν είναι logged in
+  const token = localStorage.getItem("token");
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (searchTerm.trim()) {
-      // Πηγαίνουμε στη σελίδα αναζήτησης με το query
       navigate(`/search?query=${encodeURIComponent(searchTerm.trim())}`);
     }
+  };
+
+  const handleLogout = () => {
+    // Διαγραφή token από localStorage
+    localStorage.removeItem("token");
+    // Ανακατεύθυνση στην αρχική ή στην σελίδα σύνδεσης
+    navigate("/");
   };
 
   return (
@@ -25,16 +34,15 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Spacer για να σπρώξει τα υπόλοιπα δεξιά */}
+        {/* Spacer */}
         <div className="flex-grow" />
 
-        {/* Search + User icon μαζί δεξιά */}
+        {/* Search + User icons δεξιά */}
         <div className="flex items-center gap-2">
           <form className="flex items-center w-72" onSubmit={handleSubmit}>
             <label htmlFor="simple-search" className="sr-only">Search</label>
             <div className="relative w-full">
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                {/* ... svg icon ... */}
                 <svg
                   className="w-4 h-4 text-gray-500 dark:text-gray-400"
                   aria-hidden="true"
@@ -84,13 +92,20 @@ export function Header() {
             </button>
           </form>
 
-          {/* User icon */}
+          {/* User icon - πάντοτε */}
           <Link to="/authentication">
             <UserIcon
               className="w-14 h-12 text-gray-900 cursor-pointer"
               onClick={() => console.log("User icon clicked")}
             />
           </Link>
+
+          {/* Logout icon - εμφανίζεται μόνο αν είμαστε logged in */}
+          {token && (
+            <button onClick={handleLogout} title="Logout" className="ml-2">
+              <ArrowRightOnRectangleIcon className="w-12 h-12 text-black cursor-pointer hover:text-red-800" />
+            </button>
+          )}
         </div>
       </div>
     </header>

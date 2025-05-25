@@ -1,12 +1,13 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
 
 export const ProtectedRoute = () => {
   const { token } = useAuth();
+  const location = useLocation();
 
   if (!token) {
-    // Redirect στο /authentication αντί για /login
-    return <Navigate to="/authentication" />;
+    localStorage.setItem("redirectAfterLogin", location.pathname);
+    return <Navigate to="/authentication" replace />;
   }
 
   return <Outlet />;

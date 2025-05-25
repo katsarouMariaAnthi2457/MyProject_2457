@@ -21,9 +21,14 @@ import {
 } from "@/components/ui/tabs";
 
 function AuthenticationPage() {
+  // Tabs
+  const [activeTab, setActiveTab] = useState("login");
+  const [signupSuccess, setSignupSuccess] = useState('');
+
   // Login states
   const [loginUsername, setLoginUsername] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
+
   // Signup states
   const [signupEmail, setSignupEmail] = useState('');
   const [signupName, setSignupName] = useState('');
@@ -31,6 +36,7 @@ function AuthenticationPage() {
   const [signupUsername, setSignupUsername] = useState('');
   const [signupPassword, setSignupPassword] = useState('');
   const [showSignupPassword, setShowSignupPassword] = useState(false);
+
   // Navigation
   const navigate = useNavigate();
   const backendUrl = 'https://localhost:7235/Auth';
@@ -42,29 +48,51 @@ function AuthenticationPage() {
         username: loginUsername,
         password: loginPassword,
       });
-      // υπόλοιπος κώδικας...
+
+      localStorage.setItem("token", response.data.token);
+
+      // ✅ Προσθήκη ανακατεύθυνσης μετά τη σύνδεση
+      const redirectTo = localStorage.getItem("redirectAfterLogin");
+      if (redirectTo) {
+        localStorage.removeItem("redirectAfterLogin");
+        navigate(redirectTo);
+      } else {
+        navigate("/");
+      }
     } catch (error) {
-      // ...
+      alert("Σφάλμα σύνδεσης. Έλεγξε το username ή τον κωδικό.");
     }
   };
-  
+
+  // Handle Signup
   const handleSignup = async () => {
+    setSignupSuccess('');
     try {
-      const response = await axios.post(`${backendUrl}/signup`, {
+      await axios.post(`${backendUrl}/signup`, {
         email: signupEmail,
-        firstName: signupName,  // Προσοχή, στο backend έχεις FirstName
+        firstName: signupName,
         lastName: signupLastName,
         username: signupUsername,
         password: signupPassword,
       });
-      // υπόλοιπος κώδικας...
+
+      setSignupSuccess("Η εγγραφή ήταν επιτυχής! Μπορείτε τώρα να συνδεθείτε.");
+      setActiveTab("login");
+
+      // Καθαρισμός πεδίων signup
+      setSignupEmail('');
+      setSignupName('');
+      setSignupLastName('');
+      setSignupUsername('');
+      setSignupPassword('');
     } catch (error) {
-      // ...
+      alert("Σφάλμα κατά την εγγραφή. Δοκιμάστε ξανά.");
     }
   };
+
   return (
     <div className="flex justify-center px-4 sm:px-6 md:px-8 lg:px-0">
-      <Tabs defaultValue="login" className="w-full max-w-md">
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full max-w-md">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="login">Σύνδεση</TabsTrigger>
           <TabsTrigger value="signup">Εγγραφή</TabsTrigger>
@@ -78,6 +106,9 @@ function AuthenticationPage() {
               <CardDescription />
             </CardHeader>
             <CardContent className="space-y-4">
+              {signupSuccess && (
+                <div className="text-green-600 text-sm">{signupSuccess}</div>
+              )}
               <div className="space-y-2">
                 <Label htmlFor="login-username">Username</Label>
                 <Input
@@ -115,10 +146,7 @@ function AuthenticationPage() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button
-                className="px-3 py-1 text-sm"
-                onClick={handleLogin}
-              >
+              <Button className="px-3 py-1 text-sm" onClick={handleLogin}>
                 Είσοδος
               </Button>
             </CardFooter>
@@ -152,9 +180,9 @@ function AuthenticationPage() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="signup-name">Επίθετο</Label>
+                <Label htmlFor="signup-lastname">Επίθετο</Label>
                 <Input
-                  id="signup-name"
+                  id="signup-lastname"
                   value={signupLastName}
                   onChange={(e) => setSignupLastName(e.target.value)}
                 />
@@ -193,10 +221,7 @@ function AuthenticationPage() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button
-                className="px-3 py-1 text-sm"
-                onClick={handleSignup}
-              >
+              <Button className="px-3 py-1 text-sm" onClick={handleSignup}>
                 Εγγραφή
               </Button>
             </CardFooter>

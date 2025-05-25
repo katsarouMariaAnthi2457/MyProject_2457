@@ -65,6 +65,12 @@ namespace MyWebCookingApi.Controllers
 
             return Ok("User created successfully");
         }
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();  // Κάνει sign out τον χρήστη
+            return Ok(new { Message = "Logged out successfully." });
+        }
 
         private string GenerateJwtToken(MyUser user)
         {
