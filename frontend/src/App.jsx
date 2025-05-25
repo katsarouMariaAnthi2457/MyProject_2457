@@ -27,11 +27,12 @@ function App() {
         <Route path="/forgotPassword" element={<ForgotPassword />} />       
         <Route path="/recipe/:id" element={<RecipeInfo />} />
         <Route path="/search" element={<SearchResults />} />
+        <Route path="/weekly-plan" element={<CreateWeeklyPlan />} />
 
           {/* Προστατευμένες routes */}
           <Route element={<ProtectedRoute />}>
           <Route path="/create" element={<CreateRecipe />} /> {/* <-- Add this */}
-          <Route path="/weekly-plan" element={<CreateWeeklyPlan />} />
+         
           </Route>
       </Routes>
     </Layout>

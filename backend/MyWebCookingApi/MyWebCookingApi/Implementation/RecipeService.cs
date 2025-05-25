@@ -95,9 +95,9 @@ namespace MyWebCookingApi.Implementation
             return newRecipe;
         }
 
-        public async Task<List<Recipes>> GetRecipesByCategories(RecipesCategoriesOptions options)
+        public async Task<List<Recipes>> GetRecipesByCategories(List<RecipesCategoriesOptions> options)
         {
-            var result = await _dbContext.Recipes.Where(r => r.CategoriesOptions == options).ToListAsync();
+            var result = await _dbContext.Recipes.Where(r => options.Contains(r.CategoriesOptions)).ToListAsync();
 
             return result;
         }

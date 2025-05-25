@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyWebCookingApi.Dtos;
 using MyWebCookingApi.Enums;
@@ -26,6 +27,7 @@ public class CookingController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> CreateRecipe([FromForm] RecipeParameters recipeParameters)
     {
         var result = await _recipeService.CreateRecipe(recipeParameters);
@@ -35,7 +37,7 @@ public class CookingController : ControllerBase
 
     [HttpGet]
     [Route("recipesByCategory")]
-    public async Task<IActionResult> GetRecipesByCategories(RecipesCategoriesOptions options)
+    public async Task<IActionResult> GetRecipesByCategories([FromQuery] List<RecipesCategoriesOptions> options)
     {
         var result = await _recipeService.GetRecipesByCategories(options);
 
@@ -74,6 +76,7 @@ public class CookingController : ControllerBase
     }
 
     [HttpPut]
+    [Authorize]
     public async Task<IActionResult> UpdateScore([FromBody] UpdateScoreParams updateScore)
     {
         await _recipeService.UpdateScore(updateScore.Score, updateScore.RecipeId);

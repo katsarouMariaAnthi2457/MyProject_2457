@@ -39,7 +39,8 @@ console.log(categoryName);
       setLoading(true);  // Set loading state
       // Make an API request to fetch recipes by category
       axios.get('https://localhost:7235/Cooking/recipesByCategory', {
-        params: { options: categoryId }
+        params: { options: categoryId
+         }
       })
       .then(response => {
         setLoading(false);  // Stop loading

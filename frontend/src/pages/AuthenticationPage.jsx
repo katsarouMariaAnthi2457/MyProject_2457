@@ -27,52 +27,41 @@ function AuthenticationPage() {
   // Signup states
   const [signupEmail, setSignupEmail] = useState('');
   const [signupName, setSignupName] = useState('');
+  const [signupLastName, setSignupLastName] = useState('');
   const [signupUsername, setSignupUsername] = useState('');
   const [signupPassword, setSignupPassword] = useState('');
   const [showSignupPassword, setShowSignupPassword] = useState(false);
   // Navigation
   const navigate = useNavigate();
+  const backendUrl = 'https://localhost:7235/Auth';
 
   // Handle Login
   const handleLogin = async () => {
     try {
-      const response = await axios.post('/api/login', {
+      const response = await axios.post(`${backendUrl}/login`, {
         username: loginUsername,
         password: loginPassword,
       });
-      console.log('Login success:', response.data);
-      // πχ αποθήκευση token στο localStorage
-      localStorage.setItem('token', response.data.token);
-      // redirect στην αρχική σελίδα μετά login
-      navigate('/homepage');
+      // υπόλοιπος κώδικας...
     } catch (error) {
-      console.error('Login error:', error.response?.data || error.message);
-      alert('Λάθος username ή κωδικός');
+      // ...
     }
   };
-
-  // Handle Signup
+  
   const handleSignup = async () => {
     try {
-      const response = await axios.post('/api/signup', {
+      const response = await axios.post(`${backendUrl}/signup`, {
         email: signupEmail,
-        name: signupName,
+        firstName: signupName,  // Προσοχή, στο backend έχεις FirstName
+        lastName: signupLastName,
         username: signupUsername,
         password: signupPassword,
       });
-      console.log('Signup success:', response.data);
-      alert('Εγγραφή επιτυχής! Μπορείτε τώρα να συνδεθείτε.');
-      // Καθαρισμός πεδίων signup μετά επιτυχία
-      setSignupEmail('');
-      setSignupName('');
-      setSignupUsername('');
-      setSignupPassword('');
+      // υπόλοιπος κώδικας...
     } catch (error) {
-      console.error('Signup error:', error.response?.data || error.message);
-      alert('Σφάλμα κατά την εγγραφή.');
+      // ...
     }
   };
-
   return (
     <div className="flex justify-center px-4 sm:px-6 md:px-8 lg:px-0">
       <Tabs defaultValue="login" className="w-full max-w-md">
@@ -160,6 +149,14 @@ function AuthenticationPage() {
                   id="signup-name"
                   value={signupName}
                   onChange={(e) => setSignupName(e.target.value)}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="signup-name">Επίθετο</Label>
+                <Input
+                  id="signup-name"
+                  value={signupLastName}
+                  onChange={(e) => setSignupLastName(e.target.value)}
                 />
               </div>
               <div className="space-y-2">
