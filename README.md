@@ -29,3 +29,5 @@ npx shadcn@latest add button
  3)   identity framework  βοηθαει για την αυθεντικιποιηση χρηστων  ,
  4) )το mvc newton soft json,
  5)  entryframework.tools kai Npqsql.postgreSQL το οποιο ειναι βασικο για να συνδεθω με τη βαση PostgreSQL  η οποια  ειναι σχεσιακη βαση  και λεγεται CookingDatabase και το connection string το παιρνω απο το appsetting.json.
+
+ΣΤΟ ΚΩΔΙΚΟ ΣΤΟ SIGNUP ΝΑ ΒΑΛΕΤΕ ΕΝΑ ΚΩΔΙΚΟ ΠΟΥ ΝΑ ΕΧΕΙ ΜΙΚΡΑ ΚΑΙ ΚΕΦΑΛΑΙΑ ΓΡΑΜΜΑΤΑ ΚΑΘΩς ΚΑΙ ΑΡΙΘΜΟ ΚΑΙ ΣΥΜΒΟΛΟ. ΕΥΧΑΡΙΣΤΩ
