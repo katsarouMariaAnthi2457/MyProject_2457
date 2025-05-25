@@ -22,7 +22,7 @@ npm install @tailwindcss/cli
 npx tailwindcss init -p
 5) Εγκατεστησα το Shadcn με την εντολη npx shadcn@latest init, το οποιο ειναι ενα ui component library με βαση την tailwind css που ειναι και απαραιτητη η εγκατασταση της . Mε αυτη τη βιβλιοθηκη μπορω να βοηθησω και να χρησιμοποιησω ετοιμα components οπως buttons forms ,cards τα οποια μπορω να τροποποιησω και να βγει το αποτελεσμα που θελω . Μεχρι στιγμης εχω χρησιμοποιησει 2 components τα cards για τις συνταγες μου στην αρχικη σελιδα και ενα κουμπι που στη συνεχεια θα πηγαινει σε σελιδα με φορμα για να δημιουργησει καποιος τη δικη του συνταγη . οι εντολεσ ειναι npx shadcn@latest add card
 npx shadcn@latest add button
-  
+    με την εντολη npm install xlsx file-saver για να αποθηκευσει ο χρηστης το εβδομαδιαιο προγραμμα του ως excel arxeio  
  ΟΔΗΓΙΕΣ ΕΓΚΑΤΑΣΤΑΣΗΣ για backend 
  1) Για τη δημιοουργια νεου project πατησα create a new project επειτα asp.net web api εδωσα ονομα και επειτα πατησα create.
  2)  Οι βιβλιοθηκες τις εφτιαξα κανοντασ δεξι κλικ στο MywebCookingApi παταω manage nuget packages και εγκατεστησα το 1)
